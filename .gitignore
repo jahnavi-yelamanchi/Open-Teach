@@ -36,3 +36,5 @@ kill_server.sh
 configs/collect_data_**.pkl
 *.bag
 *.npy
+*.avi
+*.metadata
