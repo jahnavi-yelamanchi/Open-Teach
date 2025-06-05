@@ -94,9 +94,9 @@ class Robot(XArmAPI):
         # modified_robot_home_pose_AA[2] -= 155
         
         # # For USB Insertion
-        modified_robot_home_pose_AA[0] += 119
-        modified_robot_home_pose_AA[1] -= 75
-        modified_robot_home_pose_AA[2] -= 155
+        # modified_robot_home_pose_AA[0] += 119
+        # modified_robot_home_pose_AA[1] -= 75
+        # modified_robot_home_pose_AA[2] -= 155
         
         
         def random_outside(inner_min, inner_max, outer_min, outer_max):

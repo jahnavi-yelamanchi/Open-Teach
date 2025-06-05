@@ -80,11 +80,13 @@ class ZMQKeypointSubscriber(threading.Thread):
 
     def recv_keypoints(self, flags=None):
         if flags is None:
+            print("rand1")
             raw_data = self.socket.recv()
             raw_array = raw_data.lstrip(self.strip_value)
             return pickle.loads(raw_array)
         else: # For possible usage of no blocking zmq subscriber
             try:
+                print("rand3")
                 raw_data = self.socket.recv(flags)
                 raw_array = raw_data.lstrip(self.strip_value)
                 return pickle.loads(raw_array)
@@ -153,11 +155,13 @@ class ZMQCameraSubscriber(threading.Thread):
             self.socket.setsockopt(zmq.SUBSCRIBE, b"depth_image")
 
     def recv_intrinsics(self):
+        print("rand2")
         raw_data = self.socket.recv()
         raw_array = raw_data.lstrip(b"intrinsics ")
         return pickle.loads(raw_array)
 
     def recv_rgb_image(self):
+        print("rand4")
         raw_data = self.socket.recv()
         data = raw_data.lstrip(b"rgb_image ")
         data = pickle.loads(data)
@@ -165,6 +169,7 @@ class ZMQCameraSubscriber(threading.Thread):
         return cv2.imdecode(encoded_data, 1), data['timestamp']
         
     def recv_depth_image(self):
+        print("rand5")
         raw_data = self.socket.recv()
         striped_data = raw_data.lstrip(b"depth_image ")
         
@@ -224,6 +229,7 @@ class ZMQCompressedImageReciever(threading.Thread):
         self.socket.connect('tcp://{}:{}'.format(self._host, self._port))
 
     def recv_image(self):
+        print("rand7")
         raw_data = self.socket.recv()
         encoded_data = np.fromstring(raw_data, np.uint8)
         decoded_frame = cv2.imdecode(encoded_data, 1)
@@ -255,6 +261,7 @@ class ZMQButtonFeedbackSubscriber(threading.Thread):
 
 
     def recv_keypoints(self):
+        print("rand6")
         raw_data = self.socket.recv()
         return pickle.loads(raw_data)
     
