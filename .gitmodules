@@ -1,3 +1,6 @@
 [submodule "reskin_sensor"]
 	path = reskin_sensor
 	url = https://github.com/jahnavi-yelamanchi/reskin_sensor
+[submodule "LIBERO"]
+	path = LIBERO
+	url = https://github.com/Lifelong-Robot-Learning/LIBERO.git
